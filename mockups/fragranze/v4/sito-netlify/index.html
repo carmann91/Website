@@ -410,7 +410,8 @@ document.querySelectorAll(".fl").forEach(b=>b.addEventListener("click",()=>{cons
   const ctx=cv.getContext('2d'); const shelf=cv.parentElement;
   let W=0,H=0,dpr=Math.min(2,devicePixelRatio||1),srcs=[],ps=[],run=true,last=0;
   const t0=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--t0'))||0;
-  const start=performance.now()+(t0+3.2)*1000;
+  let start=performance.now()+(t0+3.2)*1000;
+  window.__mistReset=()=>{ps=[];ctx.clearRect(0,0,W,H);start=performance.now()+(t0+3.2)*1000;};
   function size(){const r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
     srcs=[...shelf.querySelectorAll('.fl svg')].map(s=>{const b=s.getBoundingClientRect();return {x:b.left-r.left+b.width/2,y:b.top-r.top+6}});}
   function spawn(){const s=srcs[Math.floor(Math.random()*srcs.length)]; if(!s) return;
@@ -428,6 +429,17 @@ document.querySelectorAll(".fl").forEach(b=>b.addEventListener("click",()=>{cons
   requestAnimationFrame(tick);
   shelf.querySelectorAll('.fl').forEach(b=>b.addEventListener('pointerenter',()=>{const r=cv.getBoundingClientRect(),s=b.querySelector('svg').getBoundingClientRect();for(let i=0;i<6;i++){ps.push({x:s.left-r.left+s.width/2+(Math.random()-.5)*14,y:s.top-r.top+6,vx:(Math.random()-.5)*.3,vy:-(.3+Math.random()*.3),r:.7+Math.random()*1.2,life:0,max:180+Math.random()*120,ph:Math.random()*6.28})}}));
 })();
+</script>
+<script>
+/* tapping the logo replays the opening sequence from the top */
+document.querySelector('.logo').addEventListener('click',e=>{
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  e.preventDefault();
+  scrollTo({top:0,behavior:'auto'});
+  document.documentElement.classList.remove('no-intro');
+  document.getAnimations().forEach(a=>{ if(a instanceof CSSAnimation && a.animationName!=='breathe'){ a.cancel(); a.play(); } });
+  window.__mistReset && window.__mistReset();
+});
 </script>
 
 </body>
