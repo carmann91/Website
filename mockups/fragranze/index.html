@@ -1,16 +1,13 @@
-<!doctype html>
-<html lang="it">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fragranze – Profumeria a Roma Nord dal 1991</title>
+<title>Fragranze Roma</title>
 <meta name="description" content="Fragranze, profumeria a Roma Nord dal 1991. Due negozi: Ponte Milvio (Via Flaminia 465) e Vigna Clara (Largo Gerolamo Belloni 3).">
 <meta name="robots" content="noindex">
+<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
+    color-scheme:light;
     --ink:#2a2420; --muted:#6f655d; --paper:#faf7f2; --cream:#f1ebe1;
     --line:#e2d8ca; --gold:#a8814d; --gold-dark:#8a6838; --rose:#c9a9a0;
     --serif:"Cormorant Garamond", Georgia, serif; --sans:"Inter", system-ui, sans-serif;
@@ -21,11 +18,11 @@
   body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased}
   a{color:inherit}
   img,svg{display:block;max-width:100%}
-  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 
   .draft{background:var(--ink);color:#f3ece2;font-size:.78rem;text-align:center;padding:8px 16px;letter-spacing:.02em}
 
-  header{position:sticky;top:0;z-index:20;background:rgba(250,247,242,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(250,247,242,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
   .logo{font-family:var(--serif);font-size:1.7rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;font-weight:500}
   .logo small{display:block;font-family:var(--sans);font-size:.6rem;letter-spacing:.32em;color:var(--muted);margin-top:-4px}
@@ -119,7 +116,9 @@
   footer p{margin-bottom:6px}
   footer .legal{border-top:1px solid #3a322c;padding-top:22px;font-size:.75rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
   .callbar{display:none}
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
   @media (max-width:880px){
     .menu{display:none}
@@ -133,7 +132,7 @@
     section{padding:68px 0}
     .story-visual{aspect-ratio:16/10}
     .story-visual .year{font-size:5rem}
-    .callbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;bottom:0;left:0;right:0;z-index:30;background:var(--ink)}
+    .callbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;bottom:0;left:0;right:0;z-index:30;background:var(--ink);padding-bottom:env(safe-area-inset-bottom,0px)}
     .callbar a{color:var(--paper);text-decoration:none;text-align:center;padding:14px 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
     .callbar a + a{border-left:1px solid #4a413a}
     body{padding-bottom:50px}
@@ -148,10 +147,8 @@
     .nav .btn{display:none}
   }
 </style>
-</head>
-<body>
 
-<div class="draft">Bozza dimostrativa a cura di un web designer indipendente. Non è il sito ufficiale di Fragranze. Testi, orari e marchi sono da verificare con il negozio.</div>
+<div class="draft">Anteprima del nuovo sito di Fragranze, in lavorazione. Orari e alcuni contenuti sono in fase di verifica.</div>
 
 <header>
   <div class="wrap nav">
@@ -318,7 +315,7 @@
         <p>Scrivici cosa cerchi: un profumo che hai già amato, un regalo, una nuova scoperta. Ti rispondiamo entro un giorno lavorativo e ti teniamo da parte quello che ti serve.</p>
         <p style="margin-top:18px">Preferisci scrivere? <a href="mailto:profumeriafragranze@gmail.com">profumeriafragranze@gmail.com</a></p>
       </div>
-      <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Grazie! (bozza: modulo non attivo)';">
+      <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Modulo non ancora attivo: scrivici via email';">
         <div class="row">
           <div><label for="n">Nome</label><input id="n" required autocomplete="name"></div>
           <div><label for="t">Telefono o email</label><input id="t" required></div>
@@ -377,5 +374,3 @@
   <a href="tel:+390664590444">Chiama Vigna Clara</a>
 </nav>
 
-</body>
-</html>
