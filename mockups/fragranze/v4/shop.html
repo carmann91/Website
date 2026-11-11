@@ -419,6 +419,7 @@ footer{border-top:1px solid var(--line);padding-block:56px 36px;text-align:cente
   }
   $('open-cart').addEventListener('click',()=>{ if(step==='done') step='cart'; renderCart(); open($('cart')); });
 
+  const h = location.hash.slice(1); if (FAM[h]) { filter = h; document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.f === h)); }
   renderGrid(); renderCart();
 })();
 </script>
