@@ -1,0 +1,421 @@
+<title>Fragranze Roma</title>
+<meta name="description" content="Fragranze, profumeria a Roma Nord dal 1991: Via Flaminia 465 a Ponte Milvio e Largo Gerolamo Belloni 3 a Vigna Clara.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: a perfumer's shelf. Didone display like a bottle label, flat colour fields for the five
+   olfactory families, hairline rules borrowed from labels. One accent per family, ink and paper otherwise. */
+:root{
+  color-scheme: light;
+  --paper:#f5f4f0; --paper-2:#ebe9e2; --ink:#16181a; --muted:#5d6063; --line:#d6d3ca;
+  --accent:#8a4b1f;               /* amber, the colour of an aged extrait */
+  --citrus:#e3b53b; --floral:#d98a93; --wood:#7a5236; --amber:#b5652a; --musk:#9aa8a3;
+  --citrus-ink:#2a2208; --floral-ink:#2c1418; --wood-ink:#fbf3ea; --amber-ink:#fff6ee; --musk-ink:#13201c;
+  --glass:rgba(255,255,255,.55); --glass-line:rgba(22,24,26,.55);
+  --display:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --text:"Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --wrap:1200px;
+  --gut-l:max(20px, env(safe-area-inset-left, 0px)); --gut-r:max(20px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#121413; --paper-2:#1b1e1c; --ink:#efece5; --muted:#a6a39b; --line:#2f3330;
+  --accent:#e09a5f; --glass:rgba(255,255,255,.08); --glass-line:rgba(239,236,229,.55); color-scheme: dark; } }
+:root[data-theme="dark"]{
+  --paper:#121413; --paper-2:#1b1e1c; --ink:#efece5; --muted:#a6a39b; --line:#2f3330;
+  --accent:#e09a5f; --glass:rgba(255,255,255,.08); --glass-line:rgba(239,236,229,.55); color-scheme: dark; }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *,*::before,*::after{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--text);-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:var(--paper)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:calc(var(--wrap) + 40px);margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;letter-spacing:-0.02em;margin:0;text-wrap:balance}
+p{margin:0}
+.label{font:500 13px/1.3 var(--text);letter-spacing:.04em;color:var(--muted)}
+.measure{max-width:60ch}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);text-decoration:none;font:500 15px/1 var(--text);border-radius:999px;cursor:pointer;transition:transform .18s cubic-bezier(.2,.8,.2,1),background .18s,color .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:var(--paper)}
+.btn svg{width:14px;height:14px}
+.link{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:2px;transition:background-size .25s}
+.link:hover{background-size:0 1px;background-position:100% 100%}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:68px}
+.logo{font:500 26px/1 var(--display);letter-spacing:.01em;text-decoration:none}
+.logo i{font-style:italic;color:var(--accent)}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:15px}
+.nav ul a{text-decoration:none;color:var(--muted)}
+.nav ul a:hover{color:var(--ink)}
+.nav .btn{min-height:42px;padding:0 18px;font-size:14px}
+
+/* hero */
+.hero{padding-block:64px 40px;overflow:hidden}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:end}
+.hero h1{font-size:clamp(46px,7.4vw,108px);font-weight:400}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero .lead{font-size:clamp(17px,1.4vw,20px);color:var(--muted);margin-top:26px;max-width:34ch}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.shelf{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:2%;padding-bottom:18px;border-bottom:2px solid var(--ink);min-width:0}
+.bottle{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:10px;background:none;border:0;padding:0;cursor:pointer;color:var(--ink);font:inherit}
+.bottle svg{width:100%;height:auto;overflow:visible;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.bottle:hover svg,.bottle[aria-pressed="true"] svg{transform:translateY(-10px)}
+.bottle .liquid{transition:transform .6s cubic-bezier(.2,.8,.2,1);transform-origin:50% 100%;transform-box:fill-box}
+.bottle:hover .liquid{transform:scaleY(1.06)}
+.bottle span{font:500 12px/1.2 var(--text);letter-spacing:.03em;color:var(--muted);white-space:nowrap}
+.glass{fill:var(--glass);stroke:var(--glass-line);stroke-width:1.2}
+.cap{fill:var(--ink)}
+.tag{fill:var(--paper);stroke:var(--glass-line);stroke-width:.8}
+
+/* label band */
+.band{border-block:1px solid var(--line);background:var(--paper-2)}
+.band .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));}
+.band div div{padding:22px 18px 22px 0}
+.band div div + div{padding-left:18px;border-left:1px solid var(--line)}
+.band strong{display:block;font:400 30px/1.1 var(--display)}
+.band span{font-size:14px;color:var(--muted)}
+
+section{padding-block:clamp(72px,10vw,128px)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:48px}
+.head h2{font-size:clamp(36px,5vw,64px)}
+.head p{color:var(--muted)}
+
+/* families */
+.families__tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.chip{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px 0 12px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:500 15px/1 var(--text);cursor:pointer;transition:border-color .2s,background .2s}
+.chip i{width:18px;height:18px;border-radius:50%;background:var(--c)}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.panel{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);min-height:420px;background:var(--c);color:var(--cink);transition:background .5s,color .5s}
+.panel__name{padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.panel__name h3{font-size:clamp(56px,8vw,120px);font-style:italic}
+.panel__name p{font-size:19px;max-width:30ch}
+.panel__notes{padding:clamp(28px,4vw,56px);border-left:1px solid color-mix(in srgb,currentColor 25%,transparent);display:grid;align-content:start;gap:28px}
+.panel__notes dl{display:grid;grid-template-columns:110px minmax(0,1fr);margin:0;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent)}
+.panel__notes dt,.panel__notes dd{margin:0;padding:14px 0;border-bottom:1px solid color-mix(in srgb,currentColor 25%,transparent)}
+.panel__notes dt{font-weight:500;font-size:14px;letter-spacing:.03em}
+.panel__notes .ask{font-size:15px}
+.panel__notes .ask a{font-weight:500}
+
+/* how to try */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--ink)}
+.step{padding:28px 28px 0 0}
+.step + .step{padding-left:28px;border-left:1px solid var(--line)}
+.step b{display:block;font:italic 400 64px/1 var(--display);color:var(--accent);margin-bottom:22px}
+.step h3{font-size:28px;margin-bottom:12px}
+.step p{color:var(--muted)}
+
+/* stores */
+.stores{background:var(--ink);color:var(--paper)}
+.stores .head p{color:color-mix(in srgb,var(--paper) 70%,transparent)}
+.store-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.store{border:1px solid color-mix(in srgb,var(--paper) 22%,transparent);padding:clamp(24px,3vw,40px);display:grid;gap:24px;align-content:start}
+.store .label{color:color-mix(in srgb,var(--paper) 65%,transparent)}
+.store h3{font-size:clamp(34px,3.6vw,48px)}
+.store address{font-style:normal;font-size:19px}
+.store dl{display:grid;grid-template-columns:auto 1fr;gap:6px 24px;margin:0;font-variant-numeric:tabular-nums}
+.store dt{color:color-mix(in srgb,var(--paper) 65%,transparent)}
+.store dd{margin:0}
+.store .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.store .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.store .btn--ghost{background:transparent;color:var(--paper)}
+.store .btn--ghost:hover{background:var(--paper);color:var(--ink)}
+.store .phone{font-variant-numeric:tabular-nums;user-select:all}
+.note{font-size:14px;margin-top:20px;color:color-mix(in srgb,var(--paper) 60%,transparent)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .stores{background:var(--paper-2);color:var(--ink)} }
+:root[data-theme="dark"] .stores{background:var(--paper-2);color:var(--ink)}
+
+/* brands */
+.brands ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.brands li{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.brands li span:first-child{font:400 clamp(28px,3.4vw,44px)/1.1 var(--display)}
+.brands li span:last-child{color:var(--muted);font-size:15px;text-align:right}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:56px 32px}
+.word{font:italic 400 clamp(72px,19vw,280px)/1 var(--display);letter-spacing:-0.03em;margin:0 0 48px;padding-bottom:.08em;overflow-wrap:anywhere}
+.foot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;font-size:15px}
+.foot p{color:var(--muted)}
+.legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.callbar{display:none}
+
+/* entrance: the shelf rises once */
+@media (prefers-reduced-motion: no-preference){
+  .bottle{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+  .bottle:nth-child(2){animation-delay:.07s}.bottle:nth-child(3){animation-delay:.14s}.bottle:nth-child(4){animation-delay:.21s}.bottle:nth-child(5){animation-delay:.28s}
+  @keyframes rise{from{transform:translateY(24px)}to{transform:none}}
+}
+
+@media (max-width:960px){
+  .hero__grid,.head,.panel{grid-template-columns:minmax(0,1fr)}
+  .panel__notes{border-left:0;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent)}
+  .steps{grid-template-columns:minmax(0,1fr)}
+  .step,.step + .step{padding:28px 0;border-left:0}
+  .step + .step{border-top:1px solid var(--line)}
+  .store-grid,.foot{grid-template-columns:minmax(0,1fr)}
+  .band .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .band div div:nth-child(3){border-left:0;padding-left:0}
+  .band div div:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (max-width:720px){
+  .nav ul{display:none}
+  .hero{padding-top:40px}
+  .shelf{margin-top:8px}
+  .bottle span{font-size:11px}
+  .callbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--ink);padding-bottom:env(safe-area-inset-bottom,0px)}
+  .callbar a{color:var(--paper);text-decoration:none;text-align:center;padding:16px 8px;font:500 14px/1 var(--text)}
+  .callbar a + a{border-left:1px solid color-mix(in srgb,var(--paper) 25%,transparent)}
+  body{padding-bottom:calc(48px + env(safe-area-inset-bottom,0px))}
+  .brands li{flex-direction:column;gap:4px}
+  .brands li span:last-child{text-align:left}
+}
+@media (max-width:420px){ .nav .btn{display:none} }
+</style>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">Fragranze <i>Roma</i></a>
+    <ul>
+      <li><a href="#famiglie">Famiglie olfattive</a></li>
+      <li><a href="#provare">Come provare</a></li>
+      <li><a href="#negozi">Negozi</a></li>
+      <li><a href="#marchi">Marchi</a></li>
+    </ul>
+    <a class="btn" href="#negozi">Trova il negozio</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap hero__grid">
+      <div>
+        <p class="label">Profumeria a Ponte Milvio e Vigna Clara</p>
+        <h1 id="hero-h" style="margin-top:18px">Il tuo profumo, a Roma Nord <em>dal 1991</em>.</h1>
+        <p class="lead">Due negozi dove provare con calma, sulla pelle, e trovare la fragranza che ti somiglia.</p>
+        <div class="cta">
+          <a class="btn" href="#famiglie">Scopri la tua famiglia olfattiva <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 7h11M8 3l4 4-4 4"/></svg></a>
+          <a class="btn btn--ghost" href="#negozi">Vedi i negozi</a>
+        </div>
+      </div>
+
+      <div class="shelf" role="group" aria-label="Scegli una famiglia olfattiva">
+        <button class="bottle" type="button" data-family="agrumata" aria-pressed="false">
+          <svg viewBox="0 0 80 190" aria-hidden="true">
+            <rect class="cap" x="30" y="6" width="20" height="26" rx="2"/>
+            <rect x="34" y="32" width="12" height="12" fill="var(--glass-line)"/>
+            <rect class="glass" x="10" y="44" width="60" height="140" rx="6"/>
+            <rect class="liquid" x="14" y="92" width="52" height="88" rx="3" fill="var(--citrus)"/>
+            <rect class="tag" x="20" y="104" width="40" height="22"/>
+          </svg>
+          <span>Agrumata</span>
+        </button>
+        <button class="bottle" type="button" data-family="floreale" aria-pressed="false">
+          <svg viewBox="0 0 80 190" aria-hidden="true">
+            <circle class="cap" cx="40" cy="44" r="16"/>
+            <rect x="35" y="58" width="10" height="12" fill="var(--glass-line)"/>
+            <ellipse class="glass" cx="40" cy="128" rx="36" ry="56"/>
+            <path class="liquid" d="M8 132 Q40 140 72 132 Q74 184 40 184 Q6 184 8 132Z" fill="var(--floral)"/>
+            <rect class="tag" x="24" y="112" width="32" height="18"/>
+          </svg>
+          <span>Floreale</span>
+        </button>
+        <button class="bottle" type="button" data-family="legnosa" aria-pressed="true">
+          <svg viewBox="0 0 80 190" aria-hidden="true">
+            <rect class="cap" x="22" y="2" width="36" height="34" rx="1"/>
+            <rect x="32" y="36" width="16" height="10" fill="var(--glass-line)"/>
+            <path class="glass" d="M6 46 H74 L70 184 H10 Z"/>
+            <path class="liquid" d="M9 78 H71 L69 180 H11 Z" fill="var(--wood)"/>
+            <rect class="tag" x="18" y="98" width="44" height="26"/>
+          </svg>
+          <span>Legnosa</span>
+        </button>
+        <button class="bottle" type="button" data-family="ambrata" aria-pressed="false">
+          <svg viewBox="0 0 80 190" aria-hidden="true">
+            <path class="cap" d="M28 8 h24 l6 30 h-36z"/>
+            <rect x="34" y="38" width="12" height="14" fill="var(--glass-line)"/>
+            <path class="glass" d="M40 52 L76 104 L40 184 L4 104 Z"/>
+            <path class="liquid" d="M14 118 H66 L40 178 Z" fill="var(--amber)"/>
+            <rect class="tag" x="26" y="96" width="28" height="16"/>
+          </svg>
+          <span>Ambrata</span>
+        </button>
+        <button class="bottle" type="button" data-family="muschiata" aria-pressed="false">
+          <svg viewBox="0 0 80 190" aria-hidden="true">
+            <rect class="cap" x="33" y="40" width="14" height="30" rx="7"/>
+            <rect x="35" y="70" width="10" height="8" fill="var(--glass-line)"/>
+            <rect class="glass" x="16" y="78" width="48" height="106" rx="24"/>
+            <rect class="liquid" x="20" y="120" width="40" height="60" rx="18" fill="var(--musk)"/>
+            <rect class="tag" x="26" y="100" width="28" height="16"/>
+          </svg>
+          <span>Muschiata</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="band" aria-label="In breve">
+    <div class="wrap">
+      <div><strong>1991</strong><span>l'anno di apertura</span></div>
+      <div><strong>2</strong><span>negozi a Roma Nord</span></div>
+      <div><strong>Ponte Milvio</strong><span>Via Flaminia 465</span></div>
+      <div><strong>Vigna Clara</strong><span>Largo G. Belloni 3</span></div>
+    </div>
+  </div>
+
+  <section id="famiglie" aria-labelledby="fam-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="fam-h">Cinque famiglie per orientarsi</h2>
+        <p class="measure">Ogni profumo appartiene a una famiglia olfattiva. Sapere quale ti piace è il modo più semplice per iniziare: scegline una e ti diciamo che cosa aspettarti.</p>
+      </div>
+      <div class="families__tabs" role="tablist" aria-label="Famiglie olfattive">
+        <button class="chip" role="tab" id="t-agrumata" aria-controls="fam-panel" data-family="agrumata" style="--c:var(--citrus)"><i></i>Agrumata</button>
+        <button class="chip" role="tab" id="t-floreale" aria-controls="fam-panel" data-family="floreale" style="--c:var(--floral)"><i></i>Floreale</button>
+        <button class="chip" role="tab" id="t-legnosa" aria-controls="fam-panel" data-family="legnosa" style="--c:var(--wood)"><i></i>Legnosa</button>
+        <button class="chip" role="tab" id="t-ambrata" aria-controls="fam-panel" data-family="ambrata" style="--c:var(--amber)"><i></i>Ambrata</button>
+        <button class="chip" role="tab" id="t-muschiata" aria-controls="fam-panel" data-family="muschiata" style="--c:var(--musk)"><i></i>Muschiata</button>
+      </div>
+      <div class="panel" id="fam-panel" role="tabpanel" aria-live="polite">
+        <div class="panel__name">
+          <h3 id="fam-name">Legnosa</h3>
+          <p id="fam-desc">Calda e asciutta, resta a lungo sulla pelle. Piace a chi cerca un profumo deciso, adatto alla sera e ai mesi freddi.</p>
+        </div>
+        <div class="panel__notes">
+          <dl>
+            <dt>Note tipiche</dt><dd id="fam-notes">Cedro, sandalo, vetiver, patchouli</dd>
+            <dt>Quando</dt><dd id="fam-when">Autunno e inverno, la sera</dd>
+            <dt>Se ti piace</dt><dd id="fam-like">Il profumo del legno, del cuoio, della terra dopo la pioggia</dd>
+          </dl>
+          <p class="ask">Vuoi provarne qualcuna? <a class="link" href="#negozi">Passa in negozio</a> e chiedi di questa famiglia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="provare" aria-labelledby="prov-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="prov-h">Come provare un profumo</h2>
+        <p class="measure">Tre regole semplici per non sbagliare la scelta, che valgono per qualunque fragranza.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><b>i.</b><h3>Sulla pelle, non sul cartoncino</h3><p>Il cartoncino aiuta a fare una prima scrematura. Ma il profumo cambia con la pelle: provalo sul polso o nell'incavo del gomito.</p></div>
+        <div class="step"><b>ii.</b><h3>Aspetta almeno mezz'ora</h3><p>Le prime note svaniscono in pochi minuti. Il carattere vero arriva dopo: fai un giro e poi annusa di nuovo.</p></div>
+        <div class="step"><b>iii.</b><h3>Al massimo tre alla volta</h3><p>Dopo qualche prova il naso si stanca e i profumi si confondono. Meglio tornare un altro giorno.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stores" id="negozi" aria-labelledby="neg-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="neg-h">Due negozi a Roma Nord</h2>
+        <p class="measure">Passa quando vuoi, oppure chiama prima per sapere se un profumo è disponibile.</p>
+      </div>
+      <div class="store-grid">
+        <article class="store">
+          <p class="label">Il primo negozio</p>
+          <h3>Ponte Milvio</h3>
+          <address>Via Flaminia 465<br>00191 Roma</address>
+          <dl><dt>Lun–Sab</dt><dd>9:30–19:30</dd><dt>Domenica</dt><dd>Chiuso</dd></dl>
+          <p>Telefono: <span class="phone">06 8765 7816</span></p>
+          <div class="row">
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Fragranze+Via+Flaminia+465+Roma" target="_blank" rel="noopener">Indicazioni</a>
+            <a class="btn btn--ghost" href="tel:+390687657816">Chiama</a>
+          </div>
+        </article>
+        <article class="store">
+          <p class="label">Il secondo negozio</p>
+          <h3>Vigna Clara</h3>
+          <address>Largo Gerolamo Belloni 3<br>00191 Roma</address>
+          <dl><dt>Lun–Sab</dt><dd>10:00–19:30</dd><dt>Domenica</dt><dd>Chiuso</dd></dl>
+          <p>Telefono: <span class="phone">06 6459 0444</span></p>
+          <div class="row">
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Fragranze+Largo+Gerolamo+Belloni+3+Roma" target="_blank" rel="noopener">Indicazioni</a>
+            <a class="btn btn--ghost" href="tel:+390664590444">Chiama</a>
+          </div>
+        </article>
+      </div>
+      <p class="note">Orari in fase di verifica con il negozio.</p>
+    </div>
+  </section>
+
+  <section class="brands" id="marchi" aria-labelledby="mar-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="mar-h">Alcuni marchi che trovi da noi</h2>
+        <p class="measure">Una selezione in continuo movimento. Per un marchio preciso, chiedi in negozio.</p>
+      </div>
+      <ul>
+        <li><span>Imperial Parfums</span><span>Profumi</span></li>
+        <li><span>Ortigia Sicilia</span><span>Profumi e cura del corpo dalla Sicilia</span></li>
+        <li><span><i>e molti altri</i></span><span>Chiedi in negozio</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="word" aria-hidden="true">Fragranze</p>
+    <div class="foot">
+      <div><p class="label">Ponte Milvio</p><p style="color:var(--ink)">Via Flaminia 465, Roma</p></div>
+      <div><p class="label">Vigna Clara</p><p style="color:var(--ink)">Largo Gerolamo Belloni 3, Roma</p></div>
+      <div><p class="label">Scrivici</p><p style="color:var(--ink);user-select:all">profumeriafragranze@gmail.com</p><p><a class="link" href="https://www.facebook.com/fragranzeRm/" target="_blank" rel="noopener">Facebook</a></p></div>
+    </div>
+    <div class="legal"><span>© 2026 Fragranze · Profumeria a Roma Nord dal 1991</span><span>Privacy · Cookie</span></div>
+  </div>
+</footer>
+
+<nav class="callbar" aria-label="Contatti rapidi">
+  <a href="#negozi">I negozi</a>
+  <a href="#famiglie">Famiglie olfattive</a>
+</nav>
+
+<script>
+(() => {
+  const F = {
+    agrumata:{name:"Agrumata",c:"--citrus",ink:"--citrus-ink",desc:"Fresca e luminosa, si sente subito. È la famiglia delle colonie: leggera, facile da portare tutto il giorno.",notes:"Bergamotto, limone, arancia, pompelmo, neroli",when:"Primavera ed estate, di giorno",like:"La scorza di un limone appena tagliato, l'aria di mare"},
+    floreale:{name:"Floreale",c:"--floral",ink:"--floral-ink",desc:"La famiglia più ampia: dal mazzo di fiori bianchi alla singola rosa. Può essere delicata o molto intensa.",notes:"Rosa, gelsomino, iris, tuberosa, fiori d'arancio",when:"Tutto l'anno, di giorno e di sera",like:"Un mazzo di fiori freschi, il bucato steso al sole"},
+    legnosa:{name:"Legnosa",c:"--wood",ink:"--wood-ink",desc:"Calda e asciutta, resta a lungo sulla pelle. Piace a chi cerca un profumo deciso, adatto alla sera e ai mesi freddi.",notes:"Cedro, sandalo, vetiver, patchouli",when:"Autunno e inverno, la sera",like:"Il profumo del legno, del cuoio, della terra dopo la pioggia"},
+    ambrata:{name:"Ambrata",c:"--amber",ink:"--amber-ink",desc:"Morbida, avvolgente, un po' dolce. Le note di resine e spezie la rendono la famiglia più sensuale.",notes:"Ambra, vaniglia, benzoino, incenso, cannella",when:"Inverno, le occasioni speciali",like:"Le spezie, la vaniglia, una stanza calda d'inverno"},
+    muschiata:{name:"Muschiata",c:"--musk",ink:"--musk-ink",desc:"Pulita e vicina alla pelle, quasi un'aura. Si nota da vicino più che da lontano.",notes:"Muschio bianco, ambretta, iris, note talcate",when:"Tutti i giorni, in ufficio",like:"Il profumo di pelle pulita, le lenzuola fresche"}
+  };
+  const panel = document.getElementById('fam-panel');
+  const set = (key, scroll) => {
+    const f = F[key]; if (!f) return;
+    panel.style.setProperty('--c', `var(${f.c})`);
+    panel.style.setProperty('--cink', `var(${f.ink})`);
+    document.getElementById('fam-name').textContent = f.name;
+    document.getElementById('fam-desc').textContent = f.desc;
+    document.getElementById('fam-notes').textContent = f.notes;
+    document.getElementById('fam-when').textContent = f.when;
+    document.getElementById('fam-like').textContent = f.like;
+    panel.setAttribute('aria-labelledby', 't-' + key);
+    document.querySelectorAll('.chip').forEach(c => { const on = c.dataset.family === key; c.setAttribute('aria-selected', on); c.tabIndex = on ? 0 : -1; });
+    document.querySelectorAll('.bottle').forEach(b => b.setAttribute('aria-pressed', b.dataset.family === key));
+    if (scroll) document.getElementById('famiglie').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  };
+  document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => set(c.dataset.family)));
+  document.querySelectorAll('.bottle').forEach(b => b.addEventListener('click', () => set(b.dataset.family, true)));
+  document.querySelector('.families__tabs').addEventListener('keydown', e => {
+    if (!['ArrowRight','ArrowLeft'].includes(e.key)) return;
+    const tabs = [...document.querySelectorAll('.chip')]; const i = tabs.indexOf(document.activeElement);
+    if (i < 0) return; const n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+    n.focus(); set(n.dataset.family); e.preventDefault();
+  });
+  set('legnosa');
+})();
+</script>
