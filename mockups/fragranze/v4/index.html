@@ -261,6 +261,17 @@ footer{border-top:1px solid var(--line);padding-block:88px 36px;text-align:cente
 .quiz__res .sugg{padding:0}
 .quiz__res .acts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
 .quiz__res .small{margin-top:16px}
+
+/* invite: tooltip on hover (computer), a wave of lifts and one tip during the wave (phone) */
+.fl{position:relative}
+.fl .tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translate(-50%,6px);white-space:nowrap;font:400 10.5px/1 var(--sans);font-style:normal;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:9px 12px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:2}
+.fl .tip::after{content:"";position:absolute;top:100%;left:50%;margin-left:-5px;border:5px solid transparent;border-top-color:var(--gold)}
+@media (hover:hover){ .fl:hover .tip,.fl:focus-visible .tip{opacity:1;transform:translate(-50%,0)} }
+.fl.show-tip .tip{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion: no-preference){
+  .fl.nudge svg{animation:nudge 1.1s cubic-bezier(.3,.7,.3,1)}
+  @keyframes nudge{0%{transform:none}40%{transform:translateY(-12px)}100%{transform:none}}
+}
 </style>
 
 <div class="veil" aria-hidden="true"><div class="veil__in"><span class="veil__line"></span><span class="veil__word">Fragranze</span></div></div>
@@ -584,5 +595,29 @@ addEventListener('load', () => { if (!location.hash) scrollTo(0, 0); });
   document.getElementById('quiz-x').onclick = close;
   box.addEventListener('click', e => { if (e.target === box) close(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && box.classList.contains('on')) close(); });
+})();
+</script>
+<script>
+(() => {
+  const fls = [...document.querySelectorAll('.fl')]; if (!fls.length) return;
+  const touch = matchMedia('(hover: none)').matches;
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let stop = false;
+  fls.forEach(b => {
+    const t = document.createElement('em'); t.className = 'tip'; t.setAttribute('aria-hidden','true');
+    t.textContent = touch ? 'Tocca per scoprire' : 'Scopri la famiglia'; b.appendChild(t);
+    b.addEventListener('click', () => { stop = true; fls.forEach(x => x.classList.remove('show-tip')); });
+    b.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') stop = true; });
+  });
+  if (still) return;
+  const mid = fls[Math.floor(fls.length / 2)];
+  function wave(){
+    if (stop) return;
+    const r = fls[0].closest('.shelf').getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    fls.forEach((b, i) => setTimeout(() => { if (stop) return; b.classList.remove('nudge'); void b.offsetWidth; b.classList.add('nudge'); setTimeout(() => b.classList.remove('nudge'), 1150); }, i * 170));
+    if (touch) { mid.classList.add('show-tip'); setTimeout(() => mid.classList.remove('show-tip'), 2600); }
+  }
+  const t0 = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--t0')) || 0;
+  setTimeout(() => { wave(); const id = setInterval(() => { if (stop) return clearInterval(id); wave(); }, 9000); }, (t0 + 3.6) * 1000);
 })();
 </script>
