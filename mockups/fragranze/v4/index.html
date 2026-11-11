@@ -148,6 +148,8 @@ section{padding-block:clamp(88px,12vw,150px);border-top:1px solid var(--line)}
 
 /* ritual */
 .ritual{background:var(--bg-2)}
+.shopband{background:radial-gradient(50% 60% at 50% 50%,rgba(198,164,106,.10),rgba(198,164,106,0) 70%)}
+.shopband .shead{margin-bottom:0}
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
 .step{padding:8px clamp(20px,3vw,44px);text-align:center;display:grid;gap:18px;justify-items:center}
 .step + .step{border-left:1px solid var(--line)}
@@ -217,6 +219,7 @@ footer{border-top:1px solid var(--line);padding-block:88px 36px;text-align:cente
       <li><a href="#famiglie">Famiglie</a></li>
       <li><a href="#rituale">La prova</a></li>
       <li><a href="#maison">Maison</a></li>
+      <li><a href="shop.html">Shop</a></li>
     </ul>
     <a class="logo" href="#top">Fragranze</a>
     <div class="right"><a class="btn" href="#boutique">Le boutique</a></div>
@@ -324,6 +327,17 @@ footer{border-top:1px solid var(--line);padding-block:88px 36px;text-align:cente
     </div>
   </section>
 
+  <section class="shopband" id="shop" aria-labelledby="shp-h">
+    <div class="wrap">
+      <div class="shead">
+        <div class="orn orn--c"><svg viewBox="0 0 10 10"><path d="M5 0 10 5 5 10 0 5Z" fill="currentColor"/></svg></div>
+        <h2 id="shp-h">Lo shop online</h2>
+        <p>Ordinate il vostro profumo online e ritiratelo in boutique, oppure ricevetelo a casa, in confezione regalo se lo desiderate.</p>
+        <a class="btn btn--solid" href="shop.html">Entra nello shop</a>
+      </div>
+    </div>
+  </section>
+
   <section id="boutique" aria-labelledby="bou-h">
     <div class="wrap">
       <div class="shead">
@@ -389,7 +403,7 @@ footer{border-top:1px solid var(--line);padding-block:88px 36px;text-align:cente
 </footer>
 
 <nav class="bar" aria-label="Contatti rapidi">
-  <a href="#famiglie">Famiglie</a>
+  <a href="shop.html">Shop</a>
   <a href="#boutique">Le boutique</a>
 </nav>
 <script>
