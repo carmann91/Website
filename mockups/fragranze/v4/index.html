@@ -489,9 +489,12 @@ document.querySelectorAll(".fl").forEach(b=>b.addEventListener("click",()=>{cons
 })();
 </script>
 <script>
-/* tapping the logo replays the opening sequence from the top */
+/* tapping the logo replays the opening sequence from the top, the first time only */
 document.querySelector('.logo').addEventListener('click',e=>{
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  /* the logo replays the opening only once; afterwards it simply goes back to the top */
+  let done = false; try { done = !!localStorage.getItem('fr-replayed'); localStorage.setItem('fr-replayed','1'); } catch(_) {}
+  if (done) return;
   e.preventDefault();
   scrollTo({top:0,behavior:'auto'});
   document.documentElement.classList.remove('no-intro');
