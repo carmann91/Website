@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="it" data-type="place" data-radius="soft" data-buttons="solid" data-page-mode="short" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fragranze: profumeria a Ponte Milvio e Vigna Clara</title>
+<meta name="description" content="Profumi a Roma Nord dal 1991, in due negozi: Via Flaminia a Ponte Milvio e Largo Gerolamo Belloni a Vigna Clara.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fragranze: profumeria a Ponte Milvio e Vigna Clara">
+<meta property="og:description" content="Profumi a Roma Nord dal 1991, in due negozi.">
+<meta property="og:image" content="share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f8f8f8">
+<!-- <link rel="canonical" href="https://[dominio di Fragranze]/"> : da aggiungere quando il dominio esiste -->
+<meta name="site-kind" content="other">
+<meta name="page-type" content="place">
+<meta name="page-kind" content="place">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #f8f8f8; --p-surface: #eeeeee; --p-ink: #0a0a0a; --p-muted: #6a6a6a;
+  --p-accent: #1a5f33; --p-accent-ink: #ffffff; --p-action: #1a5f33; --p-action-ink: #ffffff;
+  --p-inv-bg: #0a0a0a; --p-inv-surface: #171717; --p-inv-ink: #f8f8f8; --p-inv-muted: #939393;
+  --p-inv-accent: #1a5f33; --p-inv-accent-ink: #ffffff; --p-inv-action: #1a5f33; --p-inv-action-ink: #ffffff;
+  --font-display: "Work Sans", system-ui, sans-serif;
+  --font-text: "Work Sans", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.025em;
+}
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/word-highlight/moment.js">
+<style>
+  /* the two shops: the street set large, the hours, two links */
+  #negozi .shop__name { font: 500 var(--t-card)/1.4 var(--font-text); margin: 0; color: var(--muted); }
+  #negozi .shop__address { display: block; font: var(--display-weight) var(--t-h2)/1.25 var(--font-display); letter-spacing: var(--display-tracking); font-style: normal; margin: var(--s-3) 0 var(--s-5); }
+  #negozi .shop__links { display: flex; flex-wrap: wrap; gap: var(--s-3) var(--s-5); margin: var(--s-5) 0 0; }
+  #negozi .shop__links .link { min-height: 44px; display: inline-flex; align-items: center; }
+  ::selection { background: color-mix(in oklab, var(--p-accent) 22%, transparent); color: var(--p-ink); }
+  .ground-brand ::selection { background: var(--p-accent-ink); color: var(--p-accent); }
+  #marchi { margin-top: var(--s-8); }
+  #marchi .t-label { margin: 0 0 var(--s-3); }
+</style>
+</head>
+<body>
+<!-- type: place (shop: profumeria), short page, no photographs (the client has none yet; the library holds no perfumery frame)
+     deal: hero statement on .ground-brand (place without photographs), nav nav-split, close close-word head row without the name
+     (no photograph), footer footer-visit, rhythm space, buttons solid, mark stack; offer composition tall-small: not used
+     (no photograph); place composition trio: not used (short page); type moment address: not used (short page); rooms row: not used
+     palette mint-pink-accounts (an off-white counter ground and one bottle-glass green for the button; green darkened one step to #1a5f33 so white words on the brand ground pass 7:1), type work-sans
+     moments: word-highlight in #storia -->
+<header class="nav nav--split">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Vai al contenuto</a>
+    <a class="nav__logo" href="#top"><span class="mark" data-mark="stack" aria-hidden="true"></span>Fragranze</a>
+    <nav class="nav__links" aria-label="Principale">
+      <div class="nav__item"><a class="nav__link" href="#storia">Storia</a></div>
+      <div class="nav__item"><a class="nav__link" href="#marchi">Marchi</a></div>
+      <div class="nav__item"><a class="nav__link" href="#negozi">Negozi</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="#negozi">Trova il negozio</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero hero--statement ground-brand" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text hero__in">
+      <div>
+        <h1 id="hero-h">Profumeria a Ponte Milvio e Vigna Clara</h1>
+        <p class="hero__lead">Profumi a Roma Nord dal 1991, in due negozi: in Via Flaminia e in Largo Gerolamo Belloni.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="#negozi">Trova il negozio<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section statement" id="storia" data-moment="word-highlight" aria-label="Storia">
+    <div class="wrap">
+      <p class="mo-wh__text">Fragranze vende profumi a Roma Nord dal 1991. Il primo negozio è in Via Flaminia, a pochi passi da Ponte Milvio; il secondo in Largo Gerolamo Belloni, a <strong>Vigna Clara</strong>.</p>
+    </div>
+  </section>
+
+  <section class="section" id="negozi" style="--h: 1; --hm: 2" aria-labelledby="negozi-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="negozi-h">Due negozi a Roma Nord</h2></div>
+      <div class="grid grid--top" id="visita" data-place="visit">
+        <div class="shop span-6">
+          <h3 class="shop__name">Ponte Milvio</h3>
+          <address class="shop__address">Via Flaminia 465</address>
+          <dl class="hours" data-assumed><dt data-days="mon-sat">Lunedì–sabato</dt><dd>9:30–19:30</dd><dt data-days="sun">Domenica</dt><dd>Chiuso</dd></dl>
+          <p class="shop__links"><a class="link" href="https://www.openstreetmap.org/search?query=Via%20Flaminia%20465%20Roma">Indicazioni per Ponte Milvio</a><a class="link" href="tel:+390687657816">Chiama Ponte Milvio</a></p>
+        </div>
+        <div class="shop span-6 start-7">
+          <h3 class="shop__name">Vigna Clara</h3>
+          <address class="shop__address">Largo Gerolamo Belloni 3</address>
+          <dl class="hours" data-assumed><dt data-days="mon-sat">Lunedì–sabato</dt><dd>10:00–19:30</dd><dt data-days="sun">Domenica</dt><dd>Chiuso</dd></dl>
+          <p class="shop__links"><a class="link" href="https://www.openstreetmap.org/search?query=Largo%20Gerolamo%20Belloni%20Roma">Indicazioni per Vigna Clara</a><a class="link" href="tel:+390664590444">Chiama Vigna Clara</a></p>
+        </div>
+      </div>
+      <div class="brands" id="marchi">
+        <p class="t-label">Marchi in negozio</p>
+        <ul class="rows">
+          <li><span class="rows__name">Imperial Parfums</span></li>
+          <li><span class="rows__name">Ortigia Sicilia</span></li>
+          <li><span class="rows__name">Gli altri marchi</span><span class="rows__value">Chiedi in negozio</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer closing footer--visit" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--word">
+      <div class="section-head--split">
+        <div><h2 id="close-h">Trova il negozio più vicino</h2><p class="t-lead">Ponte Milvio e Vigna Clara, dal lunedì al sabato.</p></div>
+        <a class="btn btn--primary" href="#negozi">Trova il negozio<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      </div>
+      <p class="close__word" aria-hidden="true">Fragranze</p>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-6 stack-4">
+          <address class="footer__address">Via Flaminia, Ponte Milvio</address>
+          <p><a class="link" href="https://www.openstreetmap.org/search?query=Via%20Flaminia%20465%20Roma">Apri la mappa</a></p>
+        </div>
+        <div class="span-6 start-7 stack-4">
+          <address class="footer__address">Largo Gerolamo Belloni, Vigna Clara</address>
+          <p><a class="link" href="https://www.openstreetmap.org/search?query=Largo%20Gerolamo%20Belloni%20Roma">Apri la mappa</a></p>
+        </div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Fragranze &nbsp; <a href="mailto:profumeriafragranze@gmail.com">Scrivi una email</a> &nbsp; <a href="https://www.facebook.com/fragranzeRm/">Facebook</a></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Azioni rapide">
+  <a class="btn btn--primary" href="#negozi">Trova il negozio</a>
+</nav>
+
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+</body>
+</html>
