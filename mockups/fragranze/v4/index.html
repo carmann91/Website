@@ -1,6 +1,6 @@
 <script>
-/* the full opening plays only on the first visit; later visits keep the bottles and the hover effects */
-(function(){ try{ if(localStorage.getItem('fr-seen')) document.documentElement.classList.add('no-intro'); else localStorage.setItem('fr-seen','1'); }catch(e){} })();
+/* the full opening plays once per browsing session; later loads in the same session keep the bottles and the hover effects */
+(function(){ try{ if(sessionStorage.getItem('fr-seen')) document.documentElement.classList.add('no-intro'); else sessionStorage.setItem('fr-seen','1'); }catch(e){} })();
 </script>
 <title>Fragranze Roma</title>
 <meta name="description" content="Fragranze, profumeria a Roma Nord dal 1991: Via Flaminia 465 a Ponte Milvio e Largo Gerolamo Belloni 3 a Vigna Clara.">
@@ -493,7 +493,7 @@ document.querySelectorAll(".fl").forEach(b=>b.addEventListener("click",()=>{cons
 document.querySelector('.logo').addEventListener('click',e=>{
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   /* the logo replays the opening only once; afterwards it simply goes back to the top */
-  let done = false; try { done = !!localStorage.getItem('fr-replayed'); localStorage.setItem('fr-replayed','1'); } catch(_) {}
+  let done = false; try { done = !!sessionStorage.getItem('fr-replayed'); sessionStorage.setItem('fr-replayed','1'); } catch(_) {}
   if (done) return;
   e.preventDefault();
   scrollTo({top:0,behavior:'auto'});
