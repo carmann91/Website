@@ -1,0 +1,375 @@
+<title>Profumeria Aurea</title>
+<meta name="description" content="Sito dimostrativo per una profumeria con due negozi.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light;
+    --ink:#2a2420; --muted:#6f655d; --paper:#faf7f2; --cream:#f1ebe1;
+    --line:#e2d8ca; --gold:#a8814d; --gold-dark:#8a6838; --rose:#c9a9a0;
+    --serif:"Cormorant Garamond", Georgia, serif; --sans:"Inter", system-ui, sans-serif;
+    --wrap:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  img,svg{display:block;max-width:100%}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+
+  .draft{background:var(--ink);color:#f3ece2;font-size:.78rem;text-align:center;padding:8px 16px;letter-spacing:.02em}
+
+  header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(250,247,242,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:var(--serif);font-size:1.7rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;font-weight:500}
+  .logo small{display:block;font-family:var(--sans);font-size:.6rem;letter-spacing:.32em;color:var(--muted);margin-top:-4px}
+  .menu{display:flex;gap:28px;list-style:none;font-size:.85rem;letter-spacing:.06em}
+  .menu a{text-decoration:none;color:var(--muted)}
+  .menu a:hover{color:var(--ink)}
+  .btn{display:inline-block;padding:13px 26px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);text-decoration:none;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:.2s}
+  .btn:hover{background:var(--gold-dark);border-color:var(--gold-dark)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--paper)}
+  .nav .btn{padding:10px 18px}
+
+  .hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#f6efe4 0%,#efe2d3 55%,#e8d4c8 100%)}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;min-height:560px;padding-top:60px;padding-bottom:60px}
+  .eyebrow{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-dark);font-weight:500}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1}
+  h1{font-size:clamp(2.6rem,6vw,4.4rem);margin:18px 0 22px}
+  h1 em{font-style:italic;color:var(--gold-dark)}
+  .lead{font-size:1.08rem;color:var(--muted);max-width:30em;margin-bottom:34px}
+  .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .bottles{position:relative;height:420px}
+  .bottles svg{position:absolute;bottom:0}
+
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper)}
+  .strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);text-align:center}
+  .strip div div{padding:26px 10px}
+  .strip strong{display:block;font-family:var(--serif);font-size:2rem;font-weight:500}
+  .strip span{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .strip .wrap > div + div{border-left:1px solid var(--line)}
+
+  section{padding:96px 0}
+  .head{max-width:620px;margin-bottom:52px}
+  .head.center{margin-left:auto;margin-right:auto;text-align:center}
+  h2{font-size:clamp(2rem,4vw,3rem);margin:12px 0 16px}
+  .head p{color:var(--muted)}
+
+  .story{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .story-visual{aspect-ratio:4/5;background:radial-gradient(circle at 30% 30%,#fff 0,#f0e3d4 40%,#d9c0ae 100%);position:relative;display:flex;align-items:center;justify-content:center}
+  .story-visual .year{font-family:var(--serif);font-size:7rem;color:rgba(138,104,56,.25);font-style:italic}
+  .story-visual .ph{position:absolute;bottom:14px;left:14px;font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.7);padding:4px 8px}
+  .story p{color:var(--muted);margin-bottom:16px}
+
+  .services{background:var(--cream)}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{background:var(--paper);padding:38px 30px;border:1px solid var(--line)}
+  .card .ico{width:44px;height:44px;margin-bottom:22px;color:var(--gold)}
+  .card h3{font-size:1.6rem;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:.95rem}
+
+  .brands ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+  .brands li{border-right:1px solid var(--line);border-bottom:1px solid var(--line);height:110px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.35rem;letter-spacing:.06em;text-align:center;padding:10px}
+  .brands li.tbd{color:#b7aa9b;font-family:var(--sans);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase}
+  .note{font-size:.8rem;color:var(--muted);margin-top:16px}
+
+  .stores{background:var(--ink);color:#efe7dc}
+  .stores .eyebrow{color:var(--rose)}
+  .stores .head p{color:#b9ada0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .store{border:1px solid #4a413a;padding:40px 36px}
+  .store h3{font-size:2rem;margin-bottom:4px}
+  .store .zone{font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--rose);margin-bottom:24px}
+  .store dl{display:grid;grid-template-columns:90px 1fr;gap:10px 16px;font-size:.95rem;margin-bottom:28px}
+  .store dt{color:#9c9085;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding-top:3px}
+  .store a{color:#efe7dc}
+  .tag{display:inline-block;font-size:.7rem;background:#4a413a;color:#d8cbbd;padding:2px 8px;margin-left:6px;vertical-align:middle}
+  .store .actions{display:flex;gap:10px;flex-wrap:wrap}
+  .store .btn{background:#efe7dc;color:var(--ink);border-color:#efe7dc}
+  .store .btn.ghost{background:transparent;color:#efe7dc}
+  .store .btn:hover{background:var(--rose);border-color:var(--rose);color:var(--ink)}
+
+  .book .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+  form{display:grid;gap:16px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  label{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+  input,select,textarea{width:100%;font:inherit;font-weight:400;padding:13px 14px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:-1px}
+  textarea{min-height:110px;resize:vertical}
+  .privacy{font-size:.8rem;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
+  .privacy input{width:auto;margin-top:4px}
+
+  .social{background:var(--cream);text-align:center}
+  .feed{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:40px 0 30px}
+  .feed div{aspect-ratio:1;background:linear-gradient(160deg,#eadccb,#d8bfae)}
+  .feed div:nth-child(2n){background:linear-gradient(160deg,#f3ebe0,#e2cdbb)}
+  .feed div:nth-child(3n){background:linear-gradient(160deg,#dcc6b8,#c9a9a0)}
+
+  footer{background:#1f1a17;color:#a99d91;font-size:.85rem;padding:56px 0 30px}
+  footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;margin-bottom:40px}
+  footer .logo{color:#efe7dc}
+  footer h4{color:#efe7dc;font-family:var(--sans);font-weight:500;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px}
+  footer p{margin-bottom:6px}
+  footer .legal{border-top:1px solid #3a322c;padding-top:22px;font-size:.75rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+  .callbar{display:none}
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+  @media (max-width:880px){
+    .menu{display:none}
+    .hero .wrap,.story,.book .wrap,.grid2{grid-template-columns:1fr}
+    .hero .wrap{min-height:auto;padding-top:48px;padding-bottom:0}
+    .bottles{height:260px}
+    .grid3{grid-template-columns:1fr}
+    .brands ul{grid-template-columns:repeat(2,1fr)}
+    .feed{grid-template-columns:repeat(3,1fr)}
+    footer .cols{grid-template-columns:1fr}
+    section{padding:68px 0}
+    .story-visual{aspect-ratio:16/10}
+    .story-visual .year{font-size:5rem}
+    .callbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;bottom:0;left:0;right:0;z-index:30;background:var(--ink);padding-bottom:env(safe-area-inset-bottom,0px)}
+    .callbar a{color:var(--paper);text-decoration:none;text-align:center;padding:14px 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+    .callbar a + a{border-left:1px solid #4a413a}
+    body{padding-bottom:50px}
+  }
+  @media (max-width:520px){
+    .row{grid-template-columns:1fr}
+    .strip strong{font-size:1.5rem}
+    .strip span{font-size:.68rem}
+    .store{padding:30px 22px}
+    .store dl{grid-template-columns:1fr;gap:2px}
+    .store dd{margin-bottom:10px}
+    .nav .btn{display:none}
+  }
+</style>
+
+<div class="draft">Sito dimostrativo. La profumeria, gli indirizzi e i contatti sono inventati: con i dati del tuo negozio diventerebbe così.</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">Aurea<small>Profumeria · dal 1991</small></a>
+    <ul class="menu">
+      <li><a href="#storia">La nostra storia</a></li>
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#marchi">Marchi</a></li>
+      <li><a href="#negozi">I negozi</a></li>
+    </ul>
+    <a href="#consulenza" class="btn">Prenota una consulenza</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding:0">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Profumeria · Due negozi in città</span>
+        <h1>Il profumo giusto<br>si trova <em>con calma</em>.</h1>
+        <p class="lead">Da oltre trent'anni aiutiamo chi entra in negozio a trovare la fragranza che gli somiglia. Lo stesso vale per chi cerca un regalo.</p>
+        <div class="cta">
+          <a href="#negozi" class="btn">Trova il negozio</a>
+          <a href="#consulenza" class="btn ghost">Consulenza olfattiva</a>
+        </div>
+      </div>
+      <div class="bottles" aria-hidden="true">
+        <svg viewBox="0 0 140 300" style="left:6%;width:30%">
+          <rect x="52" y="10" width="36" height="36" rx="3" fill="#8a6838"/>
+          <rect x="60" y="46" width="20" height="18" fill="#b89668"/>
+          <rect x="12" y="64" width="116" height="232" rx="14" fill="rgba(255,255,255,.55)" stroke="#a8814d" stroke-width="2"/>
+          <rect x="20" y="150" width="100" height="138" rx="9" fill="rgba(201,169,160,.55)"/>
+          <rect x="34" y="110" width="72" height="30" fill="#faf7f2" stroke="#a8814d"/>
+        </svg>
+        <svg viewBox="0 0 140 300" style="left:38%;width:34%;bottom:0">
+          <circle cx="70" cy="28" r="22" fill="#2a2420"/>
+          <rect x="58" y="48" width="24" height="22" fill="#6f655d"/>
+          <rect x="6" y="70" width="128" height="226" rx="62" fill="rgba(255,255,255,.6)" stroke="#2a2420" stroke-width="2"/>
+          <rect x="16" y="170" width="108" height="118" rx="50" fill="rgba(168,129,77,.35)"/>
+        </svg>
+        <svg viewBox="0 0 140 300" style="right:4%;width:24%">
+          <rect x="54" y="60" width="32" height="44" rx="2" fill="#c9a9a0"/>
+          <rect x="20" y="104" width="100" height="192" rx="4" fill="rgba(255,255,255,.55)" stroke="#a8814d" stroke-width="2"/>
+          <rect x="28" y="200" width="84" height="88" rx="2" fill="rgba(168,129,77,.3)"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap">
+      <div><strong>1991</strong><span>Dall'anno di apertura</span></div>
+      <div><strong>2</strong><span>Negozi in città</span></div>
+      <div><strong>1:1</strong><span>Consulenza in negozio</span></div>
+    </div>
+  </div>
+
+  <section id="storia">
+    <div class="wrap story">
+      <div class="story-visual">
+        <span class="year">1991</span>
+        <span class="ph">[Foto del negozio]</span>
+      </div>
+      <div>
+        <span class="eyebrow">La nostra storia</span>
+        <h2>Una profumeria di quartiere, da più di trent'anni</h2>
+        <p>[Testo da scrivere con i titolari] Abbiamo aperto nel 1991. Nel tempo siamo diventati un punto di riferimento nel quartiere per chi cerca un profumo, un consiglio o un regalo fatto con cura.</p>
+        <p>Il nostro lavoro è ascoltare: che cosa ti piace, che cosa porti già, l'occasione. Poi ti facciamo provare con calma, sulla pelle e non solo sul cartoncino.</p>
+        <a href="#consulenza" class="btn ghost">Vieni a trovarci</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="servizi" class="services">
+    <div class="wrap">
+      <div class="head center">
+        <span class="eyebrow">In negozio</span>
+        <h2>Come possiamo aiutarti</h2>
+        <p>Servizi proposti, da confermare con il negozio.</p>
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="18"/><path d="M16 26c2 4 14 4 16 0M18 19h.01M30 19h.01"/></svg>
+          <h3>Consulenza olfattiva</h3>
+          <p>Un incontro di venti minuti per capire quali note ti piacciono e trovare la tua fragranza, senza fretta.</p>
+        </div>
+        <div class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="18" width="32" height="22"/><path d="M8 26h32M24 18v22M24 18c-4-8-12-6-10-1s10 1 10 1c4-8 12-6 10-1s-10 1-10 1"/></svg>
+          <h3>Idee regalo</h3>
+          <p>Confezioni curate e consigli per chi regala. Puoi chiamarci prima e trovare il pacchetto già pronto.</p>
+        </div>
+        <div class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6h8v6h-8zM16 12h16l2 6v22a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2V18z"/><path d="M14 26h20"/></svg>
+          <h3>Profumi da scoprire</h3>
+          <p>Una selezione che va oltre i grandi nomi, con marchi italiani e di ricerca da provare in negozio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="marchi" class="brands">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Marchi</span>
+        <h2>Alcune delle case che trovi da noi</h2>
+      </div>
+      <ul>
+        <li class="tbd">[Marchio]</li>
+        <li class="tbd">[Marchio]</li>
+        <li class="tbd">[Marchio]</li>
+        <li class="tbd">[Marchio]</li>
+        <li class="tbd">[Marchio]</li>
+        <li class="tbd">[Marchio]</li>
+        <li class="tbd">[Marchio]</li>
+        <li class="tbd">[Marchio]</li>
+      </ul>
+      <p class="note">Qui vanno i marchi che il negozio tratta davvero, con i loro loghi.</p>
+    </div>
+  </section>
+
+  <section id="negozi" class="stores">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">I negozi</span>
+        <h2>Due indirizzi in città</h2>
+        <p>Passa quando vuoi, oppure chiamaci per sapere se un prodotto è disponibile.</p>
+      </div>
+      <div class="grid2">
+        <article class="store">
+          <h3>Centro</h3>
+          <div class="zone">Negozio storico</div>
+          <dl>
+            <dt>Indirizzo</dt><dd>Via Esempio 12<br>00100 Roma</dd>
+            <dt>Telefono</dt><dd><a href="#negozi">06 0000 0001</a> </dd>
+            <dt>Orari</dt><dd>Lun–Sab 9:30–19:30<br>Domenica chiuso </dd>
+          </dl>
+          <div class="actions">
+            <a class="btn" href="#negozi">Indicazioni</a>
+            <a class="btn ghost" href="#negozi">Chiama</a>
+          </div>
+        </article>
+        <article class="store">
+          <h3>Quartiere Nord</h3>
+          <div class="zone">Seconda sede</div>
+          <dl>
+            <dt>Indirizzo</dt><dd>Piazza Esempio 3<br>00100 Roma</dd>
+            <dt>Telefono</dt><dd><a href="#negozi">06 0000 0002</a></dd>
+            <dt>Orari</dt><dd>Lun–Sab 10:00–19:30<br>Domenica chiuso </dd>
+          </dl>
+          <div class="actions">
+            <a class="btn" href="#negozi">Indicazioni</a>
+            <a class="btn ghost" href="#negozi">Chiama</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="consulenza" class="book">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:0">
+        <span class="eyebrow">Su appuntamento</span>
+        <h2>Prenota una consulenza o chiedi un prodotto</h2>
+        <p>Scrivici cosa cerchi: un profumo che hai già amato, un regalo, una nuova scoperta. Ti rispondiamo entro un giorno lavorativo e ti teniamo da parte quello che ti serve.</p>
+        <p style="margin-top:18px">Preferisci scrivere? <a href="#consulenza">info@profumeria-esempio.it</a></p>
+      </div>
+      <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Richiesta inviata (demo: nessun invio reale)';">
+        <div class="row">
+          <div><label for="n">Nome</label><input id="n" required autocomplete="name"></div>
+          <div><label for="t">Telefono o email</label><input id="t" required></div>
+        </div>
+        <div class="row">
+          <div><label for="s">Negozio</label>
+            <select id="s"><option>Centro – Via Esempio</option><option>Quartiere Nord – Piazza Esempio</option><option>Indifferente</option></select></div>
+          <div><label for="m">Motivo</label>
+            <select id="m"><option>Consulenza olfattiva</option><option>Regalo</option><option>Disponibilità di un prodotto</option><option>Altro</option></select></div>
+        </div>
+        <div><label for="msg">Messaggio</label><textarea id="msg" placeholder="Es. cerco un profumo fresco per l'estate, sui 70 €"></textarea></div>
+        <label class="privacy"><input type="checkbox" required> Ho letto l'informativa privacy e acconsento a essere ricontattato per questa richiesta.</label>
+        <div><button class="btn" type="submit">Invia richiesta</button></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="social">
+    <div class="wrap">
+      <span class="eyebrow">Seguici</span>
+      <h2>Le novità, prima in negozio e poi su Instagram</h2>
+      <div class="feed" aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <p class="note" style="margin-bottom:24px">[Qui comparirebbero gli ultimi post del profilo Instagram del negozio]</p>
+      <a class="btn ghost" href="#">Instagram</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a href="#" class="logo">Aurea<small>Profumeria · dal 1991</small></a>
+        <p style="margin-top:16px;max-width:26em">Profumeria di quartiere. Consulenza, idee regalo e fragranze da scoprire.</p>
+      </div>
+      <div>
+        <h4>Centro</h4>
+        <p>Via Esempio 12, 00100 Roma</p>
+        <p><a href="#negozi">06 0000 0001</a></p>
+      </div>
+      <div>
+        <h4>Quartiere Nord</h4>
+        <p>Piazza Esempio 3, 00100 Roma</p>
+        <p><a href="#negozi">06 0000 0002</a></p>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© Profumeria Aurea (nome di esempio) · P.IVA [da inserire]</span>
+      <span>Privacy · Cookie</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="callbar" aria-label="Contatti rapidi">
+  <a href="#negozi">Negozi</a>
+  <a href="#consulenza">Prenota</a>
+</nav>
+
