@@ -6,3 +6,5 @@
   `git fetch origin main && git checkout -b <nome-attivita> origin/main`
 - I file di ogni attività stanno in `mockups/<nome-attivita>/`.
 - Una skill nuova si installa su `main`, poi si porta nei branch aperti con `git merge main`.
+- `references/awesome-design-md/` contiene la raccolta VoltAgent/awesome-design-md (84 DESIGN.md di marchi noti,
+  licenza MIT, copiata dal commit fcc7028). **Non usarla finché l'utente non lo chiede esplicitamente.**
