@@ -181,6 +181,8 @@ footer{border-top:1px solid var(--line);padding-block:56px 36px;text-align:cente
 /* floating contact button */
 .fab{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:35;display:grid;justify-items:end;gap:10px;transform:translateY(16px);opacity:0;visibility:hidden;transition:opacity .45s,transform .45s cubic-bezier(.2,.8,.2,1),visibility .45s}
 .fab.on{transform:none;opacity:1;visibility:visible}
+.fab{pointer-events:none}
+.fab.on .fab__btn,.fab.open .fab__menu{pointer-events:auto}
 .fab__btn{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 22px 0 18px;background:var(--bg);color:var(--ivory);border:1px solid var(--gold);border-radius:999px;cursor:pointer;font:400 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;box-shadow:0 12px 30px rgba(0,0,0,.45);transition:background .3s,color .3s}
 .fab__btn:hover,.fab__btn[aria-expanded="true"]{background:var(--gold);color:var(--bg)}
 .fab__btn svg{width:20px;height:20px;fill:currentColor}
