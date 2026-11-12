@@ -307,6 +307,15 @@ footer{border-top:1px solid var(--line);padding-block:88px 36px;text-align:cente
   .bar.on{transform:none}
 }
 @media (max-width:760px) and (max-height:620px){ .fl{flex-basis:50px} section.hero{padding-block:14px 20px} .hero .wrap{gap:10px} }
+
+/* keep clear of the "Powered by Netlify" badge that the host adds in the bottom-right corner (about 200 x 64 px) */
+.fab{bottom:calc(80px + env(safe-area-inset-bottom,0px))}
+@media (max-width:760px){
+  .fab{bottom:calc(80px + env(safe-area-inset-bottom,0px))}
+  .bar{left:0;right:auto;width:min(calc(100% - 216px),240px);min-width:170px;border:1px solid var(--gold-soft);border-left:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-bottom:0}
+  .bar a{padding:15px 6px;font-size:10.5px;letter-spacing:.16em}
+  body{padding-bottom:calc(70px + env(safe-area-inset-bottom,0px))}
+}
 </style>
 </head>
 <body>

@@ -194,6 +194,10 @@ footer{border-top:1px solid var(--line);padding-block:56px 36px;text-align:cente
 .fab__menu a svg{width:20px;height:20px;fill:var(--gold);flex:none}
 .fab__menu small{display:block;color:var(--muted);font-size:12px}
 @media (max-width:760px){ .fab{bottom:calc(68px + env(safe-area-inset-bottom,0px))} .fab__btn span{display:none} .fab__btn{width:52px;padding:0;justify-content:center} }
+
+/* keep clear of the "Powered by Netlify" badge that the host adds in the bottom-right corner (about 200 x 64 px) */
+.fab{bottom:calc(80px + env(safe-area-inset-bottom,0px))}
+@media (max-width:760px){ .fab{bottom:calc(80px + env(safe-area-inset-bottom,0px))} }
 </style>
 </head>
 <body data-page="shop">
