@@ -317,7 +317,7 @@ footer{border-top:1px solid var(--line);padding-block:88px 36px;text-align:cente
   body{padding-bottom:calc(70px + env(safe-area-inset-bottom,0px))}
 }
 
-/* families: rows read as clickable (hover glow on computers), smooth open/close, a one-time "peek" */
+/* families: rows read as clickable (hover glow on computers), smooth open/close */
 .carte summary{position:relative}
 .carte summary::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,var(--gold),rgba(198,164,106,.15));transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.2,.8,.2,1);pointer-events:none}
 .carte .name{display:inline-block;transition:color .35s,transform .5s cubic-bezier(.2,.8,.2,1)}
@@ -328,7 +328,8 @@ footer{border-top:1px solid var(--line);padding-block:88px 36px;text-align:cente
   .carte details:not([open]) summary:hover .hint{opacity:1;transform:none}
 }
 .carte .body{overflow:hidden}
-.carte details.peeking .plus::after{transform:rotate(0)}
+.gold{color:var(--gold)}
+button.tlink{background:linear-gradient(var(--gold),var(--gold)) 0 100%/100% 1px no-repeat;border:0;cursor:pointer}
 </style>
 </head>
 <body>
@@ -408,7 +409,8 @@ footer{border-top:1px solid var(--line);padding-block:88px 36px;text-align:cente
       <div class="shead">
         <div class="orn orn--c"><svg viewBox="0 0 10 10"><path d="M5 0 10 5 5 10 0 5Z" fill="currentColor"/></svg></div>
         <h2 id="fam-h">Le famiglie olfattive</h2>
-        <p>Ogni profumo appartiene a una famiglia. Sapere quale vi somiglia è il primo passo per sceglierlo.</p>
+        <p>Quale fragranza siete? <span class="gold">Toccate una famiglia</span> per scoprirla, oppure lasciate che sia il test a dirvelo.</p>
+        <button class="tlink" type="button" id="quiz-open-2">Fate il test in tre domande</button>
       </div>
       <div class="carte">
         <details id="fam-agrumata">
@@ -652,6 +654,7 @@ addEventListener('load', () => { if (!location.hash) scrollTo(0, 0); });
   function open(){ last = document.activeElement; step = 0; score = {}; hist = []; render(); box.classList.add('on'); box.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
   function close(){ box.classList.remove('on'); box.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; last && last.focus && last.focus(); }
   document.getElementById('quiz-open').onclick = open;
+  const q2 = document.getElementById('quiz-open-2'); if (q2) q2.onclick = open;
   document.getElementById('quiz-x').onclick = close;
   box.addEventListener('click', e => { if (e.target === box) close(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && box.classList.contains('on')) close(); });
@@ -706,21 +709,6 @@ addEventListener('load', () => { if (!location.hash) scrollTo(0, 0); });
       }
     });
   });
-  /* the peek: the first time the list comes into view, the first family opens a little and closes again */
-  if (still || !items.length) return;
-  const first = items[0], body = first.querySelector('.body'), carte = first.closest('.carte');
-  if (!body || !body.animate) return;
-  const io = new IntersectionObserver(es => {
-    if (!es[0].isIntersecting) return; io.disconnect();
-    if (items.some(d => d.open)) return;
-    setTimeout(() => {
-      if (items.some(d => d.open)) return;
-      first.open = true; first.classList.add('peeking');
-      const a = body.animate([{ height: '0px', opacity: 0 }, { height: '46px', opacity: .9, offset: .45 }, { height: '46px', opacity: .9, offset: .6 }, { height: '0px', opacity: 0 }], { duration: 1700, easing: 'cubic-bezier(.4,0,.2,1)' });
-      a.onfinish = () => { first.open = false; first.classList.remove('peeking'); };
-    }, 450);
-  }, { threshold: .45 });
-  io.observe(carte);
 })();
 </script>
 
